@@ -40,7 +40,7 @@ gulp.task('scripts', function() {
       var start = new Date();
       log('scripts:bundle');
     }
-    browserify({
+    return browserify({
       entries: [filePath],
       extensions: extensions,
       debug: env === 'dev'
@@ -61,7 +61,7 @@ gulp.task('scripts', function() {
   }
 
   if (dev) {
-    gulp.src(filePath)
+    return gulp.src(filePath)
       .pipe($.plumber())
       .pipe($.tap(function(file) {
         var d = domain.create();
@@ -74,7 +74,7 @@ gulp.task('scripts', function() {
         d.run(bundle);
       }));
   } else {
-    bundle();
+    return bundle();
   }
 });
 <% if (includeSass) { %>

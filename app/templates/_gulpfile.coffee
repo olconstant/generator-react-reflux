@@ -61,7 +61,7 @@ gulp.task 'scripts', ->
 <% if (includeSass) { %>
 gulp.task 'compass', ->
   dev = env is 'dev'
-  return gulp.src 'app/styles/**/*.scss'
+  gulp.src 'app/styles/**/*.scss'
     .pipe $.plumber()
     .pipe $.if dev, $.cached 'compass'
     .pipe $.compass
@@ -69,14 +69,14 @@ gulp.task 'compass', ->
       sass: 'app/styles'<% } %>
 
 gulp.task 'imagemin', ->
-  return gulp.src 'app/images/*'
+  gulp.src 'app/images/*'
     .pipe $.imagemin
       progressive: true
       svgoPlugins: [ removeViewBox: false ]
     .pipe gulp.dest 'dist/images'
 
 gulp.task 'copy', ->
-  return gulp.src ['app/*.txt', 'app/*.ico']
+  gulp.src ['app/*.txt', 'app/*.ico']
     .pipe gulp.dest 'dist'
 
 gulp.task 'bundle', ->
@@ -86,7 +86,7 @@ gulp.task 'bundle', ->
   cssFilter = $.filter ['**/*.css']
   htmlFilter = $.filter ['*.html']
 
-  return gulp.src 'app/index.html'
+  gulp.src 'app/index.html'
     .pipe $.preprocess()
     .pipe assets
     .pipe assets.restore()
@@ -115,8 +115,8 @@ gulp.task 'webserver', ->
         filter: (filePath) ->
           if /app\\(?=scripts<% if (includeSass) { %>|styles<% } %>)/.test filePath
             $.util.log 'Ignoring', $.util.colors.magenta filePath
-            return false
-          else return true
+            false
+          else true
       open: true
 
 gulp.task 'serve', ->

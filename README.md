@@ -6,18 +6,24 @@
 
 ## What's inside?
 
-* gulp
-* grunt
+Bundled:
+
+* gulp or grunt
 * bower
 * browserify
 * reactify
+* react
+* react-router
+* reflux
+* jquery
+* preprocessify (env conf)
+
+Optional:
+
+* modernizr
 * coffeescript
 * compass
 * jest
-* reactjs
-* reflux
-* react-router
-* preprocessify (for environments management)
 
 ## Usage
 
@@ -85,19 +91,15 @@ Options:
 * `--jest`
 	
 	Generate testing boilerplate with Jest.
-	
-* `--bootstrap`
-  
-	Include React Bootstrap.
 
 * `--build-tool=[grunt|gulp]`
   
-  Generate build config in the selected tool. Defaults to gulp.
+	Generate build config in the selected tool. Defaults to gulp.
 
 * `--skip-install`
 
-  Skips the automatic execution of `bower` and `npm` after
-  scaffolding has finished.
+	Skips the automatic execution of `bower` and `npm` after
+	scaffolding has finished.
 
 ### Component
 
